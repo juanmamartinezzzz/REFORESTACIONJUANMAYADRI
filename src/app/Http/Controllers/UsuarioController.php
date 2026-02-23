@@ -8,45 +8,39 @@ use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
-    /**
-     * Muestra el perfil del usuario actual.
-     */
-    public function perfil()
+    public function index()
     {
-        // Obtenemos el usuario autenticado
-        $usuario = Auth::user(); 
-        
-        // El karma se calcula automáticamente gracias al Accesor que pusimos en el Modelo
-        return view('usuarios.perfil', compact('usuario'));
+        //
     }
 
-    /**
-     * Muestra el formulario para editar el perfil.
-     */
-    public function editar()
+    public function create()
     {
-        $usuario = Auth::user();
-        return view('usuarios.editar', compact('usuario'));
+        //
     }
 
-    /**
-     * Actualiza los datos en la base de datos.
-     */
-    public function actualizar(Request $request)
+    public function store(Request $request)
     {
-        $usuario = Auth::user();
-
-        // Validamos que los datos cumplan con los requisitos
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'email' => 'required|email|unique:usuarios,email,' . $usuario->id,
-            'nick' => 'required|string|unique:usuarios,nick,' . $usuario->id,
-        ]);
-
-        // Actualizamos solo los campos permitidos (sin tocar el karma directamente)
-        $usuario->update($request->only('nombre', 'apellidos', 'email', 'nick'));
-
-        return redirect()->route('perfil')->with('success', 'Perfil actualizado correctamente.');
+        //
     }
+
+    public function show(string $id)
+    {
+        //
+    }
+
+    public function edit(string $id)
+    {
+        //
+    }
+
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    public function destroy(string $id)
+    {
+        //
+    }
+   
 }
